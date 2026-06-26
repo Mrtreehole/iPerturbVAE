@@ -63,16 +63,16 @@ python -c "import torch, h5py, numpy, pandas, sklearn, scipy; print(torch.__vers
 `utils/dataloader.py` reads a CSV with an `idx_position` column and uses it to select and order 978 landmark genes from the full gene-expression vectors:
 
 ```python
-/home/liuxiaoping/cbfp_vae/dataprocess/data/landmark_gene_idx_positions.csv
+dataprocess/data/landmark_gene_idx_positions.csv
 ```
 
 Before running on a new machine, update these hard-coded paths or pass explicit arguments where available:
 
 | File | Current path or setting | Action |
 | --- | --- | --- |
-| `utils/dataloader.py` | `/home/liuxiaoping/cbfp_vae/dataprocess/data/landmark_gene_idx_positions.csv` | Change to the local landmark gene index CSV |
+| `utils/dataloader.py` | `/dataprocess/data/landmark_gene_idx_positions.csv` | Change to the local landmark gene index CSV |
 | `trainer.py` | `../cbfp_vae/dataprocess/data_qcpass_unique_by_ctl.h5` | Change to the stage-1 training HDF5 |
-| `trainerctl2trt.py` | `/home/liuxiaoping/cbfp_vae/dataprocess/data_qcpass_filtered.h5` | Change to the stage-2 training HDF5 |
+| `trainerctl2trt.py` | `/dataprocess/data_qcpass_filtered.h5` | Change to the stage-2 training HDF5 |
 | `predict.py` | `./dataprocess/data_qcpass_filtered.h5` | Override with `--h5_path` |
 
 ## 🧠 Training
