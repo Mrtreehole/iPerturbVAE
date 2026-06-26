@@ -13,28 +13,7 @@ _A PyTorch project for drug perturbation gene-expression prediction, with contro
 - `predict.py` generates fold-level HDF5 outputs containing `ctls`, `pred`, and `true`
 - `new_expvae.py` computes latent-dimension attention maps `Mi` and aggregate attention map `M` from prediction HDF5 files
 
-```mermaid
-flowchart LR
-    accTitle: iPerturbVAE Training Pipeline
-    accDescr: Two-stage workflow from HDF5 data through gene-only VAE pretraining, conditional perturbation prediction, and attention explanation outputs.
-
-    h5_data[📥 HDF5 data] --> dataloader[⚙️ H5GeneCompoundDataset]
-    dataloader --> gene_vae[🧠 GeneOnlyAttnVAE Conv]
-    gene_vae --> gene_ckpt[💾 Gene VAE checkpoint]
-    gene_ckpt --> frozen_adapter[🔒 FrozenGeneToZAdapter]
-    dataloader --> cond_vae[🧠 CompoundConditionalVAE]
-    frozen_adapter --> cond_vae
-    cond_vae --> pred_h5[📤 Prediction H5]
-    pred_h5 --> attention_npz[📊 Mi and M attention maps]
-
-    classDef data fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
-    classDef model fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
-    classDef output fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
-
-    class h5_data,dataloader data
-    class gene_vae,frozen_adapter,cond_vae model
-    class gene_ckpt,pred_h5,attention_npz output
-```
+![iPerturbVAE training pipeline](pics/fig1.jpg)
 
 ## 🗂️ Repository layout
 
